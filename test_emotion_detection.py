@@ -1,6 +1,6 @@
 """Pruebas unitarias para la función emotion_detector."""
 import unittest
-from EmotionDetection import emotion_detector
+from EmotionDetection.emotion_detection import emotion_detector
 
 
 class TestEmotionDetector(unittest.TestCase):
