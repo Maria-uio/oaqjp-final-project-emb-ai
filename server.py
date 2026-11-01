@@ -7,9 +7,13 @@ app = Flask("Emotion Detector")
 
 @app.route("/emotionDetector")
 def emot_detector():
-    """Recibe el texto, ejecuta el detector y devuelve la respuesta formateada."""
+    """Recibe el texto, ejecuta el detector y devuelve la respuesta."""
     text_to_analyze = request.args.get('textToAnalyze')
     response = emotion_detector(text_to_analyze)
+
+    # Manejo de errores: si la emoción dominante es None, la entrada es inválida
+    if response['dominant_emotion'] is None:
+        return "Invalid text! Please try again!"
 
     return (
         f"For the given statement, the system response is "
